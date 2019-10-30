@@ -26,7 +26,7 @@ class _RegistrationState extends State<Registration> {
       Navigator.push(
         context,
         MaterialPageRoute(
-          builder: (BuildContext context) => Chat(),
+          builder: (BuildContext context) => Chat(user: _user),
         ),
       );
   }
