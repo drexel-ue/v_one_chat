@@ -37,29 +37,69 @@ class _RegistrationState extends State<Registration> {
         title: const Text('Register'),
       ),
       body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: <Widget>[
-            Hero(
-              tag: 'logo',
-              child: Container(
-                width: 100,
-                child: Image.asset('assets/logo.png'),
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: <Widget>[
+              Hero(
+                tag: 'logo',
+                child: Container(
+                  width: 100,
+                  child: Image.asset('assets/logo.png'),
+                ),
               ),
-            ),
-            SizedBox(height: 40),
-            TextField(),
-            SizedBox(height: 40),
-            TextField(),
-            SizedBox(height: 40),
-            CustomButton(
-              text: 'Register',
-              callback: () async {
-                await registerUser();
-              },
-            ),
-          ],
+              SizedBox(height: 40),
+              TextField(
+                onChanged: (String value) => _name = value,
+                keyboardAppearance: Brightness.dark,
+                decoration: const InputDecoration(
+                  hintText: 'Enter Name Please',
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.all(
+                      Radius.circular(50),
+                    ),
+                  ),
+                ),
+              ),
+              SizedBox(height: 20),
+              TextField(
+                onChanged: (String value) => _email = value,
+                keyboardType: TextInputType.emailAddress,
+                keyboardAppearance: Brightness.dark,
+                decoration: const InputDecoration(
+                  hintText: 'Enter Email Please',
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.all(
+                      Radius.circular(50),
+                    ),
+                  ),
+                ),
+              ),
+              SizedBox(height: 20),
+              TextField(
+                onChanged: (String value) => _password = value,
+                obscureText: true,
+                keyboardAppearance: Brightness.dark,
+                decoration: const InputDecoration(
+                  hintText: 'Enter Password Please',
+                  border: const OutlineInputBorder(
+                    borderRadius: BorderRadius.all(
+                      Radius.circular(50),
+                    ),
+                  ),
+                ),
+              ),
+              SizedBox(height: 40),
+              CustomButton(
+                text: 'Register',
+                callback: () async {
+                  await registerUser();
+                },
+              ),
+            ],
+          ),
         ),
       ),
     );
