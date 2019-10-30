@@ -55,7 +55,7 @@ class _RegistrationState extends State<Registration> {
               ),
               SizedBox(height: 20),
               TextField(
-                onChanged: (String value) => _name = value,
+                onChanged: (String value) => _name = value.trim(),
                 keyboardAppearance: Brightness.dark,
                 decoration: const InputDecoration(
                   hintText: 'Enter Name Please',
@@ -68,7 +68,7 @@ class _RegistrationState extends State<Registration> {
               ),
               SizedBox(height: 10),
               TextField(
-                onChanged: (String value) => _email = value,
+                onChanged: (String value) => _email = value.trim(),
                 keyboardType: TextInputType.emailAddress,
                 keyboardAppearance: Brightness.dark,
                 decoration: const InputDecoration(

@@ -55,7 +55,7 @@ class _LoginState extends State<Login> {
               ),
               SizedBox(height: 20),
               TextField(
-                onChanged: (String value) => _email = value,
+                onChanged: (String value) => _email = value.trim(),
                 keyboardType: TextInputType.emailAddress,
                 keyboardAppearance: Brightness.dark,
                 decoration: const InputDecoration(
