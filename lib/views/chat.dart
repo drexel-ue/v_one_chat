@@ -81,9 +81,14 @@ class _ChatState extends State<Chat> {
                   _messages.sort((Message messageA, Message messageB) =>
                       messageA.timestamp.compareTo(messageB.timestamp));
 
-                  return ListView(
-                    controller: _scrollController,
-                    children: _messages,
+                  return Center(
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: ListView(
+                        controller: _scrollController,
+                        children: _messages,
+                      ),
+                    ),
                   );
                 },
               ),
@@ -151,22 +156,26 @@ class Message extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: Column(
-        crossAxisAlignment:
-            me ? CrossAxisAlignment.end : CrossAxisAlignment.start,
-        children: <Widget>[
-          Text(from),
-          Material(
-            color: me ? Colors.teal : Colors.grey,
-            borderRadius: BorderRadius.circular(10),
-            elevation: 6,
-            child: Container(
-              padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 10),
-              child: Text(message),
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: Container(
+        child: Column(
+          crossAxisAlignment:
+              me ? CrossAxisAlignment.end : CrossAxisAlignment.start,
+          children: <Widget>[
+            Text(from),
+            Material(
+              color: me ? Colors.teal : Colors.grey,
+              borderRadius: BorderRadius.circular(10),
+              elevation: 6,
+              child: Container(
+                padding:
+                    const EdgeInsets.symmetric(vertical: 15, horizontal: 10),
+                child: Text(message),
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
