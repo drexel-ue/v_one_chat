@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:v_one_flutter_chat/auth_services/firebase_auth_service.dart';
 import 'package:v_one_flutter_chat/auth_services/user.dart';
 
 class Chat extends StatefulWidget {
@@ -11,6 +12,7 @@ class Chat extends StatefulWidget {
 }
 
 class _ChatState extends State<Chat> {
+  final _auth = FirebaseAuthService();
   final _messageController = TextEditingController();
   final _scrollController = ScrollController();
   @override
@@ -28,6 +30,7 @@ class _ChatState extends State<Chat> {
           IconButton(
             icon: Icon(Icons.close),
             onPressed: () {
+              _auth.signOut();
               Navigator.popUntil(context, (Route route) => route.isFirst);
             },
           ),
