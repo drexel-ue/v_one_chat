@@ -1,4 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:v_one_flutter_chat/auth_services/firebase_auth_service.dart';
+import 'package:v_one_flutter_chat/auth_services/user.dart';
+import 'package:v_one_flutter_chat/widgets/custom_button.dart';
+
+import 'chat.dart';
 
 class Login extends StatefulWidget {
   const Login({Key key}) : super(key: key);
@@ -8,8 +13,84 @@ class Login extends StatefulWidget {
 }
 
 class _LoginState extends State<Login> {
+  String _email;
+  String _password;
+
+  final _auth = FirebaseAuthService();
+
+  Future<void> _loginUser() async {
+    User _user = await _auth.signInWithEmailAndPassword(_email, _password);
+
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (BuildContext context) => Chat(),
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Login'),
+      ),
+      body: Center(
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 8.0),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: <Widget>[
+              Expanded(
+                child: Hero(
+                  tag: 'logo',
+                  child: Container(
+                    width: 100,
+                    child: Image.asset('assets/logo.png'),
+                  ),
+                ),
+              ),
+              SizedBox(height: 20),
+              TextField(
+                onChanged: (String value) => _email = value,
+                keyboardType: TextInputType.emailAddress,
+                keyboardAppearance: Brightness.dark,
+                decoration: const InputDecoration(
+                  hintText: 'Enter Email Please',
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.all(
+                      Radius.circular(50),
+                    ),
+                  ),
+                ),
+              ),
+              SizedBox(height: 10),
+              TextField(
+                onChanged: (String value) => _password = value,
+                autocorrect: false,
+                obscureText: true,
+                keyboardAppearance: Brightness.dark,
+                decoration: const InputDecoration(
+                  hintText: 'Enter Password Please',
+                  border: const OutlineInputBorder(
+                    borderRadius: BorderRadius.all(
+                      Radius.circular(50),
+                    ),
+                  ),
+                ),
+              ),
+              SizedBox(height: 20),
+              CustomButton(
+                text: 'Log In',
+                callback: () async {
+                  await _loginUser();
+                },
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
   }
 }

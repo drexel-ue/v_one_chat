@@ -18,7 +18,7 @@ class _RegistrationState extends State<Registration> {
 
   final _auth = FirebaseAuthService();
 
-  Future<void> registerUser() async {
+  Future<void> _registerUser() async {
     User _user =
         await _auth.createUserWithEmailAndPassword(_name, _email, _password);
 
@@ -98,7 +98,7 @@ class _RegistrationState extends State<Registration> {
               CustomButton(
                 text: 'Register',
                 callback: () async {
-                  await registerUser();
+                  await _registerUser();
                 },
               ),
             ],
