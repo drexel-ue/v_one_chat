@@ -26,7 +26,7 @@ class _RegistrationState extends State<Registration> {
     SystemChannels.textInput.invokeMethod('TextInput.hide');
 
     if (_user != null)
-      Navigator.push(
+      Navigator.pushReplacement(
         context,
         MaterialPageRoute(
           builder: (BuildContext context) => Chat(user: _user),
