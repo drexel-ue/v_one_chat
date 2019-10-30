@@ -9,6 +9,7 @@ const chatRoute = 'CHAT';
 void showLoading(BuildContext context) {
   showDialog(
     context: context,
+    barrierDismissible: false,
     builder: (BuildContext context) => Center(
       child: CircularProgressIndicator(),
     ),
