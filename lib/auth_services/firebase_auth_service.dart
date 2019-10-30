@@ -32,50 +32,6 @@ class FirebaseAuthService extends Auth {
     return _userFromFirebaseUser(result.user);
   }
 
-  Future<void> verifyPhoneNumber({
-    @required String phoneNumber,
-    @required
-        Function(String verificationId, [int forceResendingToken]) onCodeSent,
-    @required Function(AuthException authException) onVerificationFailed,
-    @required Function(AuthCredential credential) onVerificationCompleted,
-  }) async {
-    await _firebaseAuth.verifyPhoneNumber(
-        phoneNumber: phoneNumber,
-        timeout: const Duration(seconds: 5),
-        verificationCompleted: onVerificationCompleted,
-        verificationFailed:
-            onVerificationFailed, //(AuthException authException) {},
-        codeSent:
-            onCodeSent, //(String verificationId, [int forceResendingToken]) {}
-        codeAutoRetrievalTimeout: (String verificationId) {});
-  }
-
-  Future<User> signInUsingPhoneCredentials(AuthCredential credential) async {
-    AuthResult result = await _firebaseAuth.signInWithCredential(credential);
-    if (result != null) {
-      FirebaseUser user = result.user;
-      return _userFromFirebaseUser(user);
-    }
-    return null;
-  }
-
-  Future<User> signInWithPhoneNumber(
-      {@required verificationId, String smsCode}) async {
-    FirebaseUser user;
-    try {
-      final AuthCredential credential = PhoneAuthProvider.getCredential(
-        verificationId: verificationId,
-        smsCode: smsCode,
-      );
-      final AuthResult result =
-          await _firebaseAuth.signInWithCredential(credential);
-      user = result.user;
-    } on PlatformException catch (e) {
-      rethrow;
-    }
-    return _userFromFirebaseUser(user);
-  }
-
   @override
   Future<void> signOut() async => await _firebaseAuth.signOut();
 
