@@ -4,6 +4,7 @@ import 'package:flutter/services.dart';
 import 'package:v_one_flutter_chat/auth_services/auth.dart';
 import 'package:v_one_flutter_chat/auth_services/error_message.dart';
 import 'package:v_one_flutter_chat/auth_services/user.dart';
+import 'package:v_one_flutter_chat/utils.dart';
 
 class FirebaseAuthService extends Auth {
   FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
@@ -13,6 +14,8 @@ class FirebaseAuthService extends Auth {
   @override
   Future<User> createUserWithEmailAndPassword(
       String name, String email, String password, BuildContext context) async {
+    showLoading(context);
+
     AuthResult result = await _firebaseAuth
         .createUserWithEmailAndPassword(email: email, password: password)
         .catchError((e) {
@@ -26,6 +29,7 @@ class FirebaseAuthService extends Auth {
 
       return _userFromFirebaseUser(result.user);
     } else {
+      Navigator.pop(context);
       showDialog(
         context: context,
         builder: (BuildContext context) => AlertDialog(
@@ -39,6 +43,8 @@ class FirebaseAuthService extends Auth {
   @override
   Future<User> signInWithEmailAndPassword(
       String email, String password, BuildContext context) async {
+    showLoading(context);
+
     AuthResult result = await _firebaseAuth
         .signInWithEmailAndPassword(email: email, password: password)
         .catchError((e) {
@@ -46,6 +52,7 @@ class FirebaseAuthService extends Auth {
     });
 
     if (result == null) {
+      Navigator.pop(context);
       showDialog(
         context: context,
         builder: (BuildContext context) => AlertDialog(
