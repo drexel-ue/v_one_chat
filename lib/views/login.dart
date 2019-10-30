@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:v_one_flutter_chat/auth_services/firebase_auth_service.dart';
 import 'package:v_one_flutter_chat/auth_services/user.dart';
 import 'package:v_one_flutter_chat/widgets/custom_button.dart';
@@ -21,6 +22,8 @@ class _LoginState extends State<Login> {
   Future<void> _loginUser() async {
     User _user =
         await _auth.signInWithEmailAndPassword(_email, _password, context);
+
+    SystemChannels.textInput.invokeMethod('TextInput.hide');
 
     if (_user != null)
       Navigator.push(
