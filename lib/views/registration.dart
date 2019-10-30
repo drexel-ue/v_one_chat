@@ -8,8 +8,12 @@ class Registration extends StatefulWidget {
 }
 
 class _RegistrationState extends State<Registration> {
+  String _email;
+  String _password;
+  String _name;
+
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return Scaffold();
   }
 }
