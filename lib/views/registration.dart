@@ -19,8 +19,8 @@ class _RegistrationState extends State<Registration> {
   final _auth = FirebaseAuthService();
 
   Future<void> _registerUser() async {
-    User _user =
-        await _auth.createUserWithEmailAndPassword(_name, _email, _password);
+    User _user = await _auth.createUserWithEmailAndPassword(
+        _name, _email, _password, context);
 
     Navigator.push(
       context,

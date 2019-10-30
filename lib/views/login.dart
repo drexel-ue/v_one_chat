@@ -19,7 +19,8 @@ class _LoginState extends State<Login> {
   final _auth = FirebaseAuthService();
 
   Future<void> _loginUser() async {
-    User _user = await _auth.signInWithEmailAndPassword(_email, _password);
+    User _user =
+        await _auth.signInWithEmailAndPassword(_email, _password, context);
 
     Navigator.push(
       context,
