@@ -12,11 +12,13 @@ class Landing extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: <Widget>[
-              Hero(
-                tag: 'logo',
-                child: Container(
-                  width: 200,
-                  child: Image.asset('assets/logo.png'),
+              Expanded(
+                child: Hero(
+                  tag: 'logo',
+                  child: Container(
+                    width: 200,
+                    child: Image.asset('assets/logo.png'),
+                  ),
                 ),
               ),
               const Text(

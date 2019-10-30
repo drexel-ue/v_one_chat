@@ -24,8 +24,9 @@ class _ChatState extends State<Chat> {
         'message': _messageController.text,
         'from': widget.user.uid,
         'sender_name': widget.user.name,
+        'timestamp': DateTime.now().millisecondsSinceEpoch,
       });
-      _messageController.text = '';
+      _messageController.clear();
       _scrollController.animateTo(
         _scrollController.position.maxScrollExtent,
         curve: Curves.easeOut,
@@ -67,16 +68,18 @@ class _ChatState extends State<Chat> {
                   if (!snapshot.hasData)
                     return Center(child: CircularProgressIndicator());
 
-                  final _documents = snapshot.data.documents;
-                  final _messages = _documents
+                  final _messages = snapshot.data.documents
                       .map(
                         (DocumentSnapshot document) => Message(
-                          from: document.data['sender_name'],
-                          message: document.data['message'],
-                          me: widget.user.uid == document.data['from'],
-                        ),
+                            from: document.data['sender_name'],
+                            message: document.data['message'],
+                            me: widget.user.uid == document.data['from'],
+                            timestamp: document.data['timestamp']),
                       )
                       .toList();
+
+                  _messages.sort((Message messageA, Message messageB) =>
+                      messageA.timestamp.compareTo(messageB.timestamp));
 
                   return ListView(
                     controller: _scrollController,
@@ -138,11 +141,13 @@ class SendButton extends StatelessWidget {
 }
 
 class Message extends StatelessWidget {
-  const Message({Key key, this.from, this.message, this.me}) : super(key: key);
+  const Message({Key key, this.from, this.message, this.me, this.timestamp})
+      : super(key: key);
 
   final String from;
   final String message;
   final bool me;
+  final int timestamp;
 
   @override
   Widget build(BuildContext context) {
