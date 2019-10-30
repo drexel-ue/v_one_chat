@@ -5,7 +5,7 @@ import 'package:v_one_flutter_chat/views/chat.dart';
 import 'package:v_one_flutter_chat/widgets/custom_button.dart';
 
 class Registration extends StatefulWidget {
-  Registration({Key key}) : super(key: key);
+  const Registration({Key key}) : super(key: key);
 
   @override
   _RegistrationState createState() => _RegistrationState();
