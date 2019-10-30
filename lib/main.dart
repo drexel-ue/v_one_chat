@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:v_one_flutter_chat/utils.dart';
 import 'package:v_one_flutter_chat/views/chat.dart';
 import 'package:v_one_flutter_chat/views/landing.dart';
 import 'package:v_one_flutter_chat/views/login.dart';
@@ -10,10 +11,10 @@ void main() => runApp(
         theme: ThemeData.dark(),
         initialRoute: 'LANDING',
         routes: {
-          'LANDING': (BuildContext context) => Landing(),
-          'REGISTRATION': (BuildContext context) => Registration(),
-          'LOGIN': (BuildContext context) => Login(),
-          'CHAT': (BuildContext context) => Chat(),
+          landingRoute: (BuildContext context) => Landing(),
+          registrationRoute: (BuildContext context) => Registration(),
+          loginRoute: (BuildContext context) => Login(),
+          chatRoute: (BuildContext context) => Chat(),
         },
       ),
     );

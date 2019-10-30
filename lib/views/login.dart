@@ -3,8 +3,6 @@ import 'package:flutter/material.dart';
 class Login extends StatefulWidget {
   Login({Key key}) : super(key: key);
 
-  static const String id = 'LOGIN';
-
   @override
   _LoginState createState() => _LoginState();
 }

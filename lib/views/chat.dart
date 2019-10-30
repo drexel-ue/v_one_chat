@@ -3,8 +3,6 @@ import 'package:flutter/material.dart';
 class Chat extends StatefulWidget {
   Chat({Key key}) : super(key: key);
 
-  static const String id = 'CHAT';
-
   @override
   _ChatState createState() => _ChatState();
 }
