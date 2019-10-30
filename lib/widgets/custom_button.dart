@@ -7,18 +7,19 @@ class CustomButton extends StatelessWidget {
   final String text;
 
   @override
-  Widget build(BuildContext context) {
-    return Container(
-      child: Material(
-        elevation: 6,
-        borderRadius: BorderRadius.circular(30),
-        child: MaterialButton(
-          onPressed: callback,
-          minWidth: 200,
-          height: 45,
-          child: Text(text),
+  Widget build(BuildContext context) => Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Container(
+          child: Material(
+            elevation: 6,
+            borderRadius: BorderRadius.circular(30),
+            child: MaterialButton(
+              onPressed: callback,
+              minWidth: 200,
+              height: 45,
+              child: Text(text),
+            ),
+          ),
         ),
-      ),
-    );
-  }
+      );
 }
