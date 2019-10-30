@@ -12,6 +12,7 @@ class CustomButton extends StatelessWidget {
         child: Container(
           child: Material(
             color: Colors.teal,
+            clipBehavior: Clip.hardEdge,
             elevation: 6,
             borderRadius: BorderRadius.circular(30),
             child: MaterialButton(
