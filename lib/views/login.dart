@@ -22,12 +22,13 @@ class _LoginState extends State<Login> {
     User _user =
         await _auth.signInWithEmailAndPassword(_email, _password, context);
 
-    Navigator.push(
-      context,
-      MaterialPageRoute(
-        builder: (BuildContext context) => Chat(),
-      ),
-    );
+    if (_user != null)
+      Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (BuildContext context) => Chat(),
+        ),
+      );
   }
 
   @override
