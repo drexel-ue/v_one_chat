@@ -1,6 +1,4 @@
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:v_one_flutter_chat/auth_services/auth.dart';
 import 'package:v_one_flutter_chat/auth_services/user.dart';
 
