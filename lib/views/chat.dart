@@ -21,8 +21,9 @@ class _ChatState extends State<Chat> {
   Future<void> _sendMessage() async {
     if (_messageController.text.length > 0) {
       await _fireStore.collection('messages').add({
-        'text': _messageController.text,
-        'from': widget.user.name,
+        'message': _messageController.text,
+        'from': widget.user.uid,
+        'sender_name': widget.user.name,
       });
       _messageController.clear();
       _scrollController.animateTo(
@@ -61,13 +62,29 @@ class _ChatState extends State<Chat> {
             Expanded(
               child: StreamBuilder<QuerySnapshot>(
                 stream: _fireStore.collection('messages').snapshots(),
-                builder: (BuildContext context, AsyncSnapshot snapshot) {
+                builder: (BuildContext context,
+                    AsyncSnapshot<QuerySnapshot> snapshot) {
                   if (!snapshot.hasData)
                     return Center(
                       child: CircularProgressIndicator(),
                     );
 
-                  return ListView();
+                  final _documents = snapshot.data.documents;
+                  final _messages = _documents
+                      .map(
+                        (DocumentSnapshot document) => Message(
+                          from: document.data['sender_name'],
+                          message: document.data['message'],
+                          me: widget.user.uid == document.data['from'],
+                        ),
+                      )
+                      .toList();
+
+                  return ListView(
+                    controller: _scrollController,
+                    reverse: true,
+                    children: _messages,
+                  );
                 },
               ),
             ),
