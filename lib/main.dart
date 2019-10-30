@@ -38,6 +38,7 @@ class MyHomePage extends StatelessWidget {
               textAlign: TextAlign.center,
               style: TextStyle(fontSize: 40),
             ),
+            SizedBox(height: 50),
           ],
         ),
       ),
