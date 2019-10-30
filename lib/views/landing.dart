@@ -21,10 +21,10 @@ class Landing extends StatelessWidget {
                   child: Image.asset('assets/logo.png'),
                 ),
               ),
-              Text(
+              const Text(
                 'YourVOne Chat',
                 textAlign: TextAlign.center,
-                style: TextStyle(fontSize: 40),
+                style: const TextStyle(fontSize: 40),
               ),
               SizedBox(height: 50),
               CustomButton(
