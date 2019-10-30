@@ -47,7 +47,7 @@ class _RegistrationState extends State<Registration> {
                 child: Hero(
                   tag: 'logo',
                   child: Container(
-                    width: 100,
+                    width: 150,
                     child: Image.asset('assets/logo.png'),
                   ),
                 ),
