@@ -80,6 +80,7 @@ class _RegistrationState extends State<Registration> {
               SizedBox(height: 20),
               TextField(
                 onChanged: (String value) => _password = value,
+                autocorrect: false,
                 obscureText: true,
                 keyboardAppearance: Brightness.dark,
                 decoration: const InputDecoration(
