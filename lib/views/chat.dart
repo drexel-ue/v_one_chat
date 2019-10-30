@@ -25,7 +25,7 @@ class _ChatState extends State<Chat> {
         'from': widget.user.uid,
         'sender_name': widget.user.name,
       });
-      _messageController.clear();
+      _messageController.text = '';
       _scrollController.animateTo(
         _scrollController.position.maxScrollExtent,
         curve: Curves.easeOut,
@@ -65,9 +65,7 @@ class _ChatState extends State<Chat> {
                 builder: (BuildContext context,
                     AsyncSnapshot<QuerySnapshot> snapshot) {
                   if (!snapshot.hasData)
-                    return Center(
-                      child: CircularProgressIndicator(),
-                    );
+                    return Center(child: CircularProgressIndicator());
 
                   final _documents = snapshot.data.documents;
                   final _messages = _documents
@@ -82,7 +80,6 @@ class _ChatState extends State<Chat> {
 
                   return ListView(
                     controller: _scrollController,
-                    reverse: true,
                     children: _messages,
                   );
                 },
@@ -95,6 +92,7 @@ class _ChatState extends State<Chat> {
                 children: <Widget>[
                   Expanded(
                     child: TextField(
+                      onSubmitted: (String value) => _sendMessage(),
                       controller: _messageController,
                       keyboardAppearance: Brightness.dark,
                       decoration: const InputDecoration(
