@@ -17,7 +17,7 @@ class Landing extends StatelessWidget {
               Hero(
                 tag: 'logo',
                 child: Container(
-                  width: 100,
+                  width: 200,
                   child: Image.asset('assets/logo.png'),
                 ),
               ),
