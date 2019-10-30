@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "600279467151",
+    "firebase_url": "https://yourvone-chat.firebaseio.com",
+    "project_id": "yourvone-chat",
+    "storage_bucket": "yourvone-chat.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:600279467151:android:c9ccdbf8eaea35ec405cfa",
+        "android_client_info": {
+          "package_name": "com.yourvone.v_one_flutter_chat"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "600279467151-isn1t5ovjqq7hbopqh7iccia0jnb7npf.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.yourvone.v_one_flutter_chat",
+            "certificate_hash": "b188493dc709713ab7c1cae70fe7faedfc42ee49"
+          }
+        },
+        {
+          "client_id": "600279467151-e554s6jrchg70ijendar2ki9dq926278.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBDMUc6IQ0cma63aAfPIchs9XHJkVJtlEI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "600279467151-e554s6jrchg70ijendar2ki9dq926278.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "600279467151-jfi3ek758pp3u2ds5s8omfuqcutmr2p2.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.yourvone.vOneFlutterChat"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
