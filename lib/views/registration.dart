@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 class Registration extends StatefulWidget {
   Registration({Key key}) : super(key: key);
 
+  static const String id = 'REGISTRATION';
+
   @override
   _RegistrationState createState() => _RegistrationState();
 }

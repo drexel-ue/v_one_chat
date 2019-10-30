@@ -4,6 +4,8 @@ import 'package:v_one_flutter_chat/widgets/custom_button.dart';
 class Landing extends StatelessWidget {
   const Landing({Key key}) : super(key: key);
 
+  static const String id = 'LANDING';
+
   @override
   Widget build(BuildContext context) => Scaffold(
         body: Center(
