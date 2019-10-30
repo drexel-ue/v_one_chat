@@ -38,19 +38,21 @@ class _RegistrationState extends State<Registration> {
       ),
       body: Center(
         child: Padding(
-          padding: const EdgeInsets.all(8.0),
+          padding: const EdgeInsets.symmetric(horizontal: 8.0),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: <Widget>[
-              Hero(
-                tag: 'logo',
-                child: Container(
-                  width: 100,
-                  child: Image.asset('assets/logo.png'),
+              Expanded(
+                child: Hero(
+                  tag: 'logo',
+                  child: Container(
+                    width: 100,
+                    child: Image.asset('assets/logo.png'),
+                  ),
                 ),
               ),
-              SizedBox(height: 40),
+              SizedBox(height: 20),
               TextField(
                 onChanged: (String value) => _name = value,
                 keyboardAppearance: Brightness.dark,
@@ -63,7 +65,7 @@ class _RegistrationState extends State<Registration> {
                   ),
                 ),
               ),
-              SizedBox(height: 20),
+              SizedBox(height: 10),
               TextField(
                 onChanged: (String value) => _email = value,
                 keyboardType: TextInputType.emailAddress,
@@ -77,7 +79,7 @@ class _RegistrationState extends State<Registration> {
                   ),
                 ),
               ),
-              SizedBox(height: 20),
+              SizedBox(height: 10),
               TextField(
                 onChanged: (String value) => _password = value,
                 autocorrect: false,
@@ -92,7 +94,7 @@ class _RegistrationState extends State<Registration> {
                   ),
                 ),
               ),
-              SizedBox(height: 40),
+              SizedBox(height: 20),
               CustomButton(
                 text: 'Register',
                 callback: () async {
