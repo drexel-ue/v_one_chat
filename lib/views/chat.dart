@@ -18,6 +18,21 @@ class _ChatState extends State<Chat> {
   final _messageController = TextEditingController();
   final _scrollController = ScrollController();
 
+  Future<void> _sendMessage() async {
+    if (_messageController.text.length > 0) {
+      await _fireStore.collection('messages').add({
+        'text': _messageController.text,
+        'from': widget.user.name,
+      });
+      _messageController.clear();
+      _scrollController.animateTo(
+        _scrollController.position.maxScrollExtent,
+        curve: Curves.easeOut,
+        duration: Duration(milliseconds: 300),
+      );
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -77,7 +92,7 @@ class _ChatState extends State<Chat> {
                   ),
                   SizedBox(width: 10),
                   SendButton(
-                    callback: () {},
+                    callback: _sendMessage,
                     text: 'send',
                   )
                 ],
