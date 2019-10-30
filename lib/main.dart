@@ -7,6 +7,7 @@ import 'package:v_one_flutter_chat/views/login.dart';
 import 'package:v_one_flutter_chat/views/registration.dart';
 
 void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
   await SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
 
   runApp(
