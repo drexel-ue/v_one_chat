@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:v_one_flutter_chat/utils.dart';
 import 'package:v_one_flutter_chat/widgets/custom_button.dart';
 
 class Landing extends StatelessWidget {
@@ -28,11 +29,15 @@ class Landing extends StatelessWidget {
               SizedBox(height: 50),
               CustomButton(
                 text: 'Log In',
-                callback: () {},
+                callback: () {
+                  Navigator.of(context).pushNamed(loginRoute);
+                },
               ),
               CustomButton(
                 text: 'Register',
-                callback: () {},
+                callback: () {
+                  Navigator.of(context).pushNamed(registrationRoute);
+                },
               ),
             ],
           ),
