@@ -14,7 +14,7 @@ void main() async {
     MaterialApp(
       title: 'Chat Demo',
       theme: ThemeData.dark(),
-      initialRoute: 'LANDING',
+      initialRoute: landingRoute,
       routes: {
         landingRoute: (BuildContext context) => Landing(),
         registrationRoute: (BuildContext context) => Registration(),
